@@ -10,6 +10,8 @@ const SKILL_DATA = [
   { label: 'HTML/CSS', years: 5, group: 0 },
   { label: 'Node.js', years: 4, group: 1 },
   { label: 'Express.js', years: 4, group: 1 },
+  { label: 'Python', years: 3, group: 1 },
+  { label: 'FastAPI', years: 2, group: 1 },
   { label: 'Java', years: 3, group: 1 },
   { label: 'C++', years: 4, group: 1 },
   { label: 'PostgreSQL', years: 4, group: 2 },
@@ -23,9 +25,9 @@ const GROUP_COLORS = ['255,178,56', '255,122,61', '255,216,102', '237,160,63']
 
 const CHIP_GROUPS = [
   { title: 'Frontend', items: ['React', 'JavaScript', 'HTML/CSS', 'Tailwind CSS', 'Framer Motion', 'Vite'] },
-  { title: 'Backend & Languages', items: ['Node.js', 'Express.js', 'Java', 'C++', 'REST APIs'] },
+  { title: 'Backend & Languages', items: ['Node.js', 'Express.js', 'Python', 'FastAPI', 'Java', 'C++', 'REST APIs'] },
   { title: 'Database & Cloud', items: ['PostgreSQL', 'Supabase', 'AWS'] },
-  { title: 'Testing & Tools', items: ['Selenium', 'Git & GitHub', 'Postman', 'VS Code', 'IntelliJ IDEA'] },
+  { title: 'Testing & Tools', items: ['Selenium', 'Pytest', 'Git & GitHub', 'Postman', 'VS Code', 'IntelliJ IDEA'] },
 ]
 
 function SkillGraph() {

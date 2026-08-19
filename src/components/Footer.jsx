@@ -16,7 +16,7 @@ export default function Footer() {
       <div className="max-w-[1180px] mx-auto px-6">
         <div className="flex justify-between items-center flex-wrap gap-6 mb-10">
           <a href="#hero" className="font-display font-bold text-[19px]">
-            chiku<span className="grad-text">.dev</span>
+            daksh<span className="grad-text">.dev</span>
           </a>
           <div className="flex gap-[26px] flex-wrap">
             {LINKS.map((l) => (
