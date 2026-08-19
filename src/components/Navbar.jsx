@@ -97,7 +97,7 @@ export default function Navbar({ theme, toggleTheme }) {
         <div className="max-w-[1180px] mx-auto px-6">
           <div className="glass flex items-center justify-between px-[22px] py-3">
             <a href="#hero" onClick={handleLogoClick} className="font-display font-bold text-[19px]">
-              daksh<span className="grad-text">.dev</span>
+              chiku<span className="grad-text">.dev</span>
             </a>
 
             <div className="hidden lg:flex items-center gap-[20px]">
