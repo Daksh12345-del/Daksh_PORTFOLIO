@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0A0806;
+  --bg-soft: #120E0A;
+  --surface: rgba(255, 191, 105, 0.045);
+  --surface-strong: rgba(255, 191, 105, 0.09);
+  --border: rgba(255, 189, 107, 0.14);
+  --text: #F5EFE4;
+  --text-muted: #ADA192;
+  --text-faint: #6b6154;
+  --accent1: #FFB238;
+  --accent2: #FF7A3D;
+  --warn: #FFD866;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+  --grad: linear-gradient(135deg, #FFE9A8 0%, #FFB238 45%, #FF6A2E 100%);
+}
+
+html.light {
+  --bg: #FBF6EE;
+  --bg-soft: #F3ECDD;
+  --surface: rgba(255, 255, 255, 0.7);
+  --surface-strong: rgba(255, 255, 255, 0.88);
+  --border: rgba(120, 74, 12, 0.14);
+  --text: #201A12;
+  --text-muted: #6b5d49;
+  --text-faint: #a4967d;
+  --accent1: #C97A1B;
+  --accent2: #D4571C;
+  --warn: #B8860B;
+  --shadow: 0 8px 32px rgba(90, 50, 10, 0.12);
+  --grad: linear-gradient(135deg, #C97A1B 0%, #D4571C 55%, #A63E12 100%);
+}
+
+/* ---- DAKSH_OS theme ---- */
+.os-root {
+  --os-bg: #0a0c14;
+  --os-surface: #12151f;
+  --os-surface2: #171b28;
+  --os-border: rgba(255, 255, 255, 0.1);
+  --os-text: #eef0f5;
+  --os-text-dim: #838c9e;
+  --os-accent: #22d3ee;
+  --os-accent2: #ff5fa2;
+  background: var(--os-bg);
+  color: var(--os-text);
+  font-family: 'Inter', sans-serif;
+}
+.os-window {
+  background: var(--os-surface);
+  border: 1px solid var(--os-border);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+.os-titlebar {
+  background: var(--os-surface2);
+  border-bottom: 1px solid var(--os-border);
+}
+.os-window-body {
+  max-height: 70vh;
+}
+.os-dock {
+  background: rgba(18, 21, 31, 0.85);
+  border: 1px solid var(--os-border);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+.os-dock-item {
+  transition: background 0.15s ease;
+}
+.os-dock-item:hover {
+  background: var(--os-surface2);
+}
+.os-dock-item[data-active="true"] {
+  background: var(--os-surface2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  transition: background 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent1);
+  color: #fff;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-mono-ui {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-strong);
+  border-radius: 8px;
+}
+
+.glass {
+  background: var(--surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.glass-strong {
+  background: var(--surface-strong);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.grad-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grad-bg {
+  background: var(--grad);
+}
+
+.btn-primary {
+  background: var(--grad);
+  color: #fff;
+  box-shadow: 0 6px 24px rgba(108, 99, 255, 0.35);
+}
+.btn-primary:hover {
+  box-shadow: 0 10px 30px rgba(108, 99, 255, 0.5);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent2);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Ticker is a deliberate, continuous marquee — keep it moving even when
+     the OS asks to reduce motion, otherwise it freezes mid-loop. */
+  .animate-ticker {
+    animation-duration: 10s !important;
+    animation-iteration-count: infinite !important;
+  }
+}
+
+@media print {
+  * {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  nav, footer, .no-print, .animate-ticker {
+    display: none !important;
+  }
+  body, section, .glass, .glass-strong {
+    background: #ffffff !important;
+    color: #111111 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    border-color: #ddd !important;
+  }
+  .grad-text {
+    -webkit-text-fill-color: initial !important;
+    background: none !important;
+    color: #111 !important;
+  }
+  canvas, svg.network {
+    display: none !important;
+  }
+  section {
+    page-break-inside: avoid;
+    padding: 16px 0 !important;
+    min-height: 0 !important;
+  }
+  a {
+    color: #111 !important;
+    text-decoration: underline;
+  }
+  * {
+    color: #111 !important;
+  }
+}
