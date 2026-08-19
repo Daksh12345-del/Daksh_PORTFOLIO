@@ -16,7 +16,7 @@ export default function Footer() {
       <div className="max-w-[1180px] mx-auto px-6">
         <div className="flex justify-between items-center flex-wrap gap-6 mb-10">
           <a href="#hero" className="font-display font-bold text-[19px]">
-            daksh<span className="grad-text">.dev</span>
+            chiku<span className="grad-text">.dev</span>
           </a>
           <div className="flex gap-[26px] flex-wrap">
             {LINKS.map((l) => (
@@ -35,7 +35,7 @@ export default function Footer() {
           </button>
         </div>
         <div className="flex justify-between items-center flex-wrap gap-3.5 text-[13px]" style={{ color: 'var(--text-faint)' }}>
-          <span>© 2026 Daksh Singhal. All rights reserved.</span>
+          <span>© 2026 chiku Singhal. All rights reserved.</span>
           <span className="font-mono-ui">Built with React · Tailwind CSS · Framer Motion</span>
         </div>
       </div>
