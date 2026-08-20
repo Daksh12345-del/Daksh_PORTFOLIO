@@ -54,6 +54,20 @@ export default function ParticleTitle({ text = 'DAKSH SINGHAL', className = '' }
     canvas.addEventListener('mousemove', onMove)
     canvas.addEventListener('mouseleave', onLeave)
 
+    // Touch support: follow the finger while it's on the canvas, and
+    // release the effect the instant it lifts, so it never stays
+    // "stuck" the way a lone synthetic mousemove would leave it.
+    const onTouchMove = (e) => {
+      if (!e.touches || !e.touches.length) return
+      const t = e.touches[0]
+      const rect = canvas.getBoundingClientRect()
+      pointerRef.current = { x: t.clientX - rect.left, y: t.clientY - rect.top }
+    }
+    canvas.addEventListener('touchstart', onTouchMove, { passive: true })
+    canvas.addEventListener('touchmove', onTouchMove, { passive: true })
+    canvas.addEventListener('touchend', onLeave, { passive: true })
+    canvas.addEventListener('touchcancel', onLeave, { passive: true })
+
     function draw() {
       if (!maskData) { raf = requestAnimationFrame(draw); return }
       ctx.clearRect(0, 0, w, h)
@@ -102,6 +116,10 @@ export default function ParticleTitle({ text = 'DAKSH SINGHAL', className = '' }
       window.removeEventListener('resize', resize)
       canvas.removeEventListener('mousemove', onMove)
       canvas.removeEventListener('mouseleave', onLeave)
+      canvas.removeEventListener('touchstart', onTouchMove)
+      canvas.removeEventListener('touchmove', onTouchMove)
+      canvas.removeEventListener('touchend', onLeave)
+      canvas.removeEventListener('touchcancel', onLeave)
     }
   }, [text])
 
