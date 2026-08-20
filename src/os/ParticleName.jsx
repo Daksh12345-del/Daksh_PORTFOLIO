@@ -45,6 +45,21 @@ export default function ParticleName({ text = 'DAKSH SINGHAL' }) {
     }
     window.addEventListener('mousemove', onMove)
 
+    // Touch support: update the pointer while a finger is on the canvas,
+    // and release the effect as soon as the finger lifts (no lingering
+    // "stuck" hover state on mobile, since there's no real mouseleave).
+    const onTouchMove = (e) => {
+      if (!e.touches || !e.touches.length) return
+      const t = e.touches[0]
+      const rect = canvas.getBoundingClientRect()
+      pointerRef.current = { x: t.clientX - rect.left, y: t.clientY - rect.top }
+    }
+    const onTouchEnd = () => { pointerRef.current = { x: -9999, y: -9999 } }
+    window.addEventListener('touchstart', onTouchMove, { passive: true })
+    window.addEventListener('touchmove', onTouchMove, { passive: true })
+    window.addEventListener('touchend', onTouchEnd, { passive: true })
+    window.addEventListener('touchcancel', onTouchEnd, { passive: true })
+
     function draw() {
       ctx.clearRect(0, 0, w, h)
       ctx.fillStyle = '#0a0c14'
@@ -86,6 +101,10 @@ export default function ParticleName({ text = 'DAKSH SINGHAL' }) {
       cancelAnimationFrame(raf)
       window.removeEventListener('resize', resize)
       window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('touchstart', onTouchMove)
+      window.removeEventListener('touchmove', onTouchMove)
+      window.removeEventListener('touchend', onTouchEnd)
+      window.removeEventListener('touchcancel', onTouchEnd)
     }
   }, [text])
 
